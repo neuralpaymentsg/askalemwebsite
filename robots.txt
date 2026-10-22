@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://askalem.com/sitemap.xml
