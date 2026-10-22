@@ -1,0 +1,16 @@
+# Alem
+
+> The Economic Control Plane for AI Agents. Alem develops identity, delegated authority, policy controls, approvals, ledgers and outcome measurement for AI agents.
+
+## Products
+- Alem Finance: https://finance.askalem.com/ — invoice intake, finance operations, approval workflows and AI-assisted document review. Workspace: https://app.finance.askalem.com/.
+- Alem ROI & Agent Gateway: https://beta.askalem.com/ — agent registration, budgets, policy checks, human approvals, ledger and cost/outcome tracking; private-beta sandbox. No real payment settlement is live.
+
+## Company
+Alem is operated by AQYL.AI PTE. LTD. Backed by Antler.
+Founder: Dinara Abdizhaparova. Email: dinara@askalem.com.
+Company LinkedIn: https://www.linkedin.com/company/askalemcom/
+Company X: https://x.com/askalemai
+
+## Important limitations
+Finance accounting connectors are being validated in pilots. ROI settlement and live card, bank and stablecoin payment execution are not yet enabled.
