@@ -33,3 +33,9 @@ JavaScript syntax, shell syntax and Git whitespace checks passed.
 An isolated deployment fixture verified check mode without writes, successful
 replacement with backups, and restoration after public verification failure.
 These fixture tests do not imply that production has been deployed.
+
+## 25 November update
+
+Removed the three public traction metrics at the founder’s request. Retained
+Antler, angel investors and program alumni in one responsive strip. Removed
+the obsolete traction footer note and updated deployment content validation.
