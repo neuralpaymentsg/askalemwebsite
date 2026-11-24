@@ -20,9 +20,9 @@ python3 - "$TMP" <<'PY'
 from pathlib import Path
 import sys
 p=Path(sys.argv[1]);h=(p/'index.html').read_text()
-for expected in ['Infrastructure for ', 'agentic commerce.', 'https://finance.askalem.com/', 'https://app.finance.askalem.com/', 'Investors and programs', 'Planned execution through payment partners']:
+for expected in ['Infrastructure for ', 'agentic commerce.', 'https://finance.askalem.com/', 'https://app.finance.askalem.com/', 'Investors and programs', 'class="antler-logo"', 'Planned execution through payment partners']:
     if expected not in h: raise SystemExit('Missing expected homepage content: '+expected)
-for removed in ['$17,500', 'Paying customers', 'B2B pilots across Alem']:
+for removed in ['$17,500', 'Paying customers', 'B2B pilots across Alem', 'Antoine Fourmont-Fingal', 'and angel investors']:
     if removed in h: raise SystemExit('Removed traction content is still present: '+removed)
 if len(h)<10000 or '</html>' not in h: raise SystemExit('Homepage download is incomplete')
 if 'Infrastructure for agentic commerce' not in (p/'llms.txt').read_text(): raise SystemExit('Metadata mismatch')

@@ -39,3 +39,8 @@ These fixture tests do not imply that production has been deployed.
 Removed the three public traction metrics at the founder’s request. Retained
 Antler, angel investors and program alumni in one responsive strip. Removed
 the obsolete traction footer note and updated deployment content validation.
+
+Removed Antoine’s public profile at the founder’s request. The founder layout
+now shows Dinara only. The backing strip uses the Antler vector logo sourced
+from https://www.antler.co/ and omits the angel-investor label. SVG is embedded
+in the homepage, so no additional assets or deployment paths are required.
