@@ -16,7 +16,7 @@ for x in index.html finance/index.html robots.txt sitemap.xml llms.txt; do
   mkdir -p "$T/$(dirname "$x")"
   curl -fsSL --max-time 30 "$BASE/$x" -o "$T/$x"
 done
-grep -q 'The Economic Control Plane' "$T/index.html"
+grep -q 'Infrastructure for ' "$T/index.html"
 grep -q 'Stop chasing invoices' "$T/finance/index.html"
 mkdir -p "$B" "$HOME_SITE" "$FINANCE_SITE"
 cp -p "$C" "$B/Caddyfile"
