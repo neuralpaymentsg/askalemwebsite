@@ -13,32 +13,34 @@ BASE=https://raw.githubusercontent.com/neuralpaymentsg/askalemwebsite/$REF
 grep -q 'root \* /data/askalem-home' "$CONFIG" || { echo 'Homepage root differs; review configuration first.'; exit 1; }
 TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
-for file in index.html llms.txt; do
+for file in index.html llms.txt alem-social-v3.png; do
   curl -fsSL --connect-timeout 10 --max-time 45 "$BASE/$file" -o "$TMP/$file"
 done
 python3 - "$TMP" <<'PY'
 from pathlib import Path
 import sys
 p=Path(sys.argv[1]);h=(p/'index.html').read_text()
-for expected in ['Infrastructure for ', 'agentic commerce.', 'https://finance.askalem.com/', 'https://app.finance.askalem.com/', 'Investors and programs', 'class="antler-logo"', 'Planned execution through payment partners']:
+for expected in ['Infrastructure for ', 'Why we start with invoices', 'id="run-check"', 'https://finance.askalem.com/', 'https://app.finance.askalem.com/', 'Investors and programs', 'class="antler-logo"', 'Next · Via partners', 'https://askalem.com/alem-social-v3.png']:
     if expected not in h: raise SystemExit('Missing expected homepage content: '+expected)
 for removed in ['$17,500', 'Paying customers', 'B2B pilots across Alem', 'Antoine Fourmont-Fingal', 'and angel investors']:
     if removed in h: raise SystemExit('Removed traction content is still present: '+removed)
+png=(p/'alem-social-v3.png').read_bytes()
+if png[:8] != b'\x89PNG\r\n\x1a\n' or len(png)<1000: raise SystemExit('Social preview image is invalid')
 if len(h)<10000 or '</html>' not in h: raise SystemExit('Homepage download is incomplete')
 if 'Infrastructure for agentic commerce' not in (p/'llms.txt').read_text(): raise SystemExit('Metadata mismatch')
 PY
 CONFIG_HASH=$(sha256sum "$CONFIG" | cut -d' ' -f1)
-echo 'PREFLIGHT=PASS; target=askalem.com; files=index.html,llms.txt'
+echo 'PREFLIGHT=PASS; target=askalem.com; files=index.html,llms.txt,alem-social-v3.png'
 if [[ "$MODE" == --check ]]; then echo 'PRODUCTION_MODIFIED=NO'; exit 0; fi
 mkdir -p /opt/app/backups
 BACKUP=$(mktemp -d /opt/app/backups/alem-home-20261124-XXXXXX)
-for file in index.html llms.txt; do
+for file in index.html llms.txt alem-social-v3.png; do
   if [[ -e "$SITE/$file" ]]; then cp -p "$SITE/$file" "$BACKUP/$file"; fi
 done
 rollback(){
   local result=$?
   trap - ERR
-  for file in index.html llms.txt; do
+  for file in index.html llms.txt alem-social-v3.png; do
     if [[ -f "$BACKUP/$file" ]]; then
       cp -p "$BACKUP/$file" "$SITE/.$file.rollback"
       mv -f "$SITE/.$file.rollback" "$SITE/$file"
@@ -50,7 +52,7 @@ rollback(){
   exit "$result"
 }
 trap rollback ERR
-for file in index.html llms.txt; do
+for file in index.html llms.txt alem-social-v3.png; do
   install -m 644 "$TMP/$file" "$SITE/.$file.new"
   mv -f "$SITE/.$file.new" "$SITE/$file"
 done
@@ -63,6 +65,8 @@ done
 [[ "$VERIFIED" == yes ]]
 curl -fsSL --connect-timeout 10 --max-time 30 "https://askalem.com/llms.txt?release=$REF" -o "$TMP/live-llms.txt"
 cmp -s "$TMP/llms.txt" "$TMP/live-llms.txt"
+curl -fsSL --connect-timeout 10 --max-time 30 "https://askalem.com/alem-social-v3.png?release=$REF" -o "$TMP/live-social.png"
+cmp -s "$TMP/alem-social-v3.png" "$TMP/live-social.png"
 trap - ERR
 echo "DEPLOY=PASS; backup=$BACKUP"
 echo 'FINANCE_AND_GATEWAY_UNCHANGED=YES; CADDY_RESTARTED=NO'

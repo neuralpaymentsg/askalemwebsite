@@ -1,16 +1,22 @@
 # Alem
 
-> Infrastructure for agentic commerce, starting with finance. Alem helps finance teams manage invoices, approvals and payment matching today, while building toward controlled agent-executed payments through partners.
+> Infrastructure for agentic commerce, starting with finance. Alem is building the control layer for business payments. Finance supports invoices, approvals and reconciliation today.
 
-## Products
-- Alem Finance: https://finance.askalem.com/ — invoice intake, approval workflows, payment matching and open balances. Workspace: https://app.finance.askalem.com/.
-- Alem ROI & Agent Gateway: https://beta.askalem.com/ — agent registration, budgets, policy checks, human approvals, ledger and cost/outcome tracking; private-beta sandbox. No real payment settlement is live.
+## Products and status
+- Live: Alem Finance — https://finance.askalem.com/ — invoice review, approval workflows, imported payment matching and open balances. Workspace: https://app.finance.askalem.com/.
+- Private beta: Alem ROI & Agent Gateway — https://beta.askalem.com/ — agent identity, budgets, policy checks, human approvals and outcome tracking in a sandbox.
+- Next, via partners: live payment execution on bank, card and stablecoin rails. No live settlement is currently connected.
 
-## Company
-Alem is operated by AQYL.AI PTE. LTD. Backed by Antler.
-Founder: Dinara Abdizhaparova. Email: dinara@askalem.com.
+## Why invoices
+Invoices establish the obligation, approvals establish authority and reconciliation records the outcome. This is the starting point for controlled agent payments.
+The homepage policy illustration is local demo logic with synthetic requests. It does not execute payments or create a production audit record.
+
+## Company and contact
+Alem is operated by AQYL.AI PTE. LTD. Backed by Antler. Program alumni: DIFC Innovation Hub and Plug and Play.
+Founder: Dinara Abdizhaparova.
+Finance demos, design partnerships and investor enquiries: dinara@askalem.com.
+Telegram: https://t.me/dinaraessen1
 Company LinkedIn: https://www.linkedin.com/company/askalemcom/
-Company X: https://x.com/askalemai
 
 ## Important limitations
-Finance accounting connectors are being validated in pilots. ROI settlement and live card, bank and stablecoin payment execution are not yet enabled.
+Finance accounting connectors are being validated in pilots. Discuss specific integrations during onboarding. Payment execution is planned through partners.

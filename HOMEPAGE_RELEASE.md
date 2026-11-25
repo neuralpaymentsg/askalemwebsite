@@ -1,46 +1,41 @@
-# Agentic commerce homepage — 24 November 2026
+# Alem homepage — 25 November 2026
 
-The homepage now presents one company story: infrastructure for agentic commerce,
-starting with invoice approvals and payment matching. It retains the existing
-Alem symbol, Finance product and workspace links, and private-beta Gateway link.
+Connects the Finance product to the longer-term control layer for agent payments.
+The hero includes a local, clearly labelled policy illustration: approved recipient
+under AED 20,000 passes; over-limit requests require approval; unknown recipients
+are blocked. Its bounded decision log is browser-local and resets on reload.
+No payment requests, tracking or customer data are sent by this demo.
 
-The founder confirmed $17,500 received for Finance AI Agent. The page labels
-eight pilots as across Alem. The invoice example is illustrative. Payment
-execution is explicitly planned, and Gateway controls remain a private beta.
+Adds the invoice-to-control thesis, one Live / Private beta / Next via partners
+roadmap, founder profile, separate demo / partnership / investor email links,
+Telegram contact and a 1200 × 630 Open Graph card. No fabricated product screenshot,
+calendar link, client metrics or team members are included. Founder and Antler
+logos are retained; the Antler vector was sourced from https://www.antler.co/.
 
-## Scope
+## Deploy
 
-Only `index.html` and `llms.txt` are deployed. Finance, Gateway, password recovery,
-databases, DNS and Caddy configuration are not modified. No restart is needed.
+Use the full reviewed commit SHA with `deploy-home.sh --check SHA` or
+`deploy-home.sh --apply SHA` on the existing server, with sudo.
 
-## Deployment on the existing server
+Only `index.html`, `llms.txt` and `alem-social-v3.png` are deployed to the existing
+homepage root. The script backs up existing files, verifies public responses and
+restores the previous release on failure. Finance, Gateway, DNS, databases and
+Caddy configuration are unchanged; no restart is needed.
 
-Use the full reviewed commit SHA. Download `deploy-home.sh` from that commit,
-then run `sudo bash deploy-home.sh --check COMMIT_SHA` followed by
-`sudo bash deploy-home.sh --apply COMMIT_SHA`.
+## Final copy alignment
 
-The script checks the known homepage root, validates downloaded content, backs
-up both files, replaces them atomically, and compares public HTML and metadata
-with the release. On failure it restores the previous files. The backup path is
-printed on completion. `deploy-sites.sh` is the legacy combined-site deployment;
-use `deploy-home.sh` for this release.
+The global headline is “Infrastructure for agentic commerce. Starting with
+finance.” Primary demo actions consistently read “Book a demo”. Added the
+control-context explanation and a dedicated Gateway beta section. Future
+execution via licensed partners remains explicitly planned. No customer
+screenshot or fabricated live transaction is presented.
 
 ## Validation
 
-Desktop and mobile browser review passed, including menu navigation, invoice
-tabs and FAQ expansion. The mobile document has no horizontal overflow.
-JavaScript syntax, shell syntax and Git whitespace checks passed.
-An isolated deployment fixture verified check mode without writes, successful
-replacement with backups, and restoration after public verification failure.
-These fixture tests do not imply that production has been deployed.
-
-## 25 November update
-
-Removed the three public traction metrics at the founder’s request. Retained
-Antler, angel investors and program alumni in one responsive strip. Removed
-the obsolete traction footer note and updated deployment content validation.
-
-Removed Antoine’s public profile at the founder’s request. The founder layout
-now shows Dinara only. The backing strip uses the Antler vector logo sourced
-from https://www.antler.co/ and omits the angel-investor label. SVG is embedded
-in the homepage, so no additional assets or deployment paths are required.
+Browser checks passed for all three policy outcomes and their decision log,
+mobile menu and FAQ. Final copy/layout checked at desktop and 375px content
+width, with no horizontal overflow. HTML nesting, unique IDs, anchor targets,
+structured metadata, JavaScript and shell syntax checks passed. An isolated
+deploy fixture verified no-write check mode, three-file deployment and complete
+rollback when public social-image verification fails. No live deployment has
+been performed by this workspace.
